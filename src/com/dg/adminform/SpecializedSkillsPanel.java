@@ -1,0 +1,503 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
+package com.dg.adminform;
+
+import com.dg.dbconnection.AdminData;
+import javax.swing.*;
+import java.awt.*;
+
+public class SpecializedSkillsPanel extends javax.swing.JPanel {
+
+    /**
+     * Creates new form SpecializedSkillsPanel
+     */
+    public SpecializedSkillsPanel() {
+        initComponents();
+        setBackground(Color.WHITE);
+        setOpaque(false);
+
+        AdminMedicalTrainingOption.setEnabled(false);
+        AdminVehicleType.setEnabled(false);
+
+        AdminBanglaSkill.setEnabled(false);
+        AdminEnglishSkill.setEnabled(false);
+        AdminRegionalLanguageSkill.setEnabled(false);
+
+        AdminITSkill.setEnabled(false);
+        AdminEngineeringSkill.setEnabled(false);
+        AdminCommunicationsSkill.setEnabled(false);
+
+        AdminMedicalTraining.addActionListener(this::AdminMedicalTrainingActionPerformed);
+        AdminDriving.addActionListener(this::AdminDrivingActionPerformed);
+        AdminLanguageSkills.addActionListener(this::AdminLanguageSkillsActionPerformed);
+        AdminTechnicalSkill.addActionListener(this::AdminTechnicalSkillActionPerformed);
+
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        Graphics2D g2 = (Graphics2D) g.create();
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        int arc = 25;
+        int shadow = 8;
+
+        // Shadow
+        g2.setColor(new Color(0, 0, 0, 60));
+        g2.fillRoundRect(shadow, shadow,
+                getWidth() - shadow,
+                getHeight() - shadow,
+                arc, arc);
+
+        // Background
+        g2.setColor(getBackground());
+        g2.fillRoundRect(0, 0,
+                getWidth() - shadow,
+                getHeight() - shadow,
+                arc, arc);
+
+        g2.dispose();
+    }
+    // Medical Training
+
+    private void AdminMedicalTrainingActionPerformed(java.awt.event.ActionEvent evt) {
+        AdminMedicalTrainingOption.setEnabled(AdminMedicalTraining.isSelected());
+    }
+
+// Driving
+    private void AdminDrivingActionPerformed(java.awt.event.ActionEvent evt) {
+        AdminVehicleType.setEnabled(AdminDriving.isSelected());
+    }
+
+// Language Skills
+    private void AdminLanguageSkillsActionPerformed(java.awt.event.ActionEvent evt) {
+        boolean selected = AdminLanguageSkills.isSelected();
+        AdminBanglaSkill.setEnabled(selected);
+        AdminEnglishSkill.setEnabled(selected);
+        AdminRegionalLanguageSkill.setEnabled(selected);
+    }
+
+// Technical Skills
+    private void AdminTechnicalSkillActionPerformed(java.awt.event.ActionEvent evt) {
+        boolean selected = AdminTechnicalSkill.isSelected();
+        AdminITSkill.setEnabled(selected);
+        AdminEngineeringSkill.setEnabled(selected);
+        AdminCommunicationsSkill.setEnabled(selected);
+    }
+
+// Check medical training
+    public boolean validateMedicalTraining() {
+        if (AdminMedicalTraining.isSelected()) {
+            if (AdminMedicalTrainingOption.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(this, "Please select your Medical Training option.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
+
+// Check driving
+    public boolean validateDriving() {
+        if (AdminDriving.isSelected()) {
+            if (AdminVehicleType.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(this, "Please select your Vehicle Type.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
+
+// Check language skills
+    public boolean validateLanguageSkills() {
+        if (AdminLanguageSkills.isSelected()) {
+            if (!AdminBanglaSkill.isSelected() && !AdminEnglishSkill.isSelected() && !AdminRegionalLanguageSkill.isSelected()) {
+                JOptionPane.showMessageDialog(this, "Please select at least one language skill.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
+
+// Check technical skills
+    public boolean validateTechnicalSkills() {
+        if (AdminTechnicalSkill.isSelected()) {
+            if (!AdminITSkill.isSelected() && !AdminEngineeringSkill.isSelected() && !AdminCommunicationsSkill.isSelected()) {
+                JOptionPane.showMessageDialog(this, "Please select at least one technical skill.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jSlider1 = new javax.swing.JSlider();
+        jLabel1 = new javax.swing.JLabel();
+        AdminMedicalTraining = new javax.swing.JCheckBox();
+        AdminMedicalTrainingOption = new javax.swing.JComboBox<>();
+        AdminSearchAndRescue = new javax.swing.JCheckBox();
+        AdminSwimming = new javax.swing.JCheckBox();
+        AdminDriving = new javax.swing.JCheckBox();
+        AdminVehicleType = new javax.swing.JComboBox<>();
+        AdminLanguageSkills = new javax.swing.JCheckBox();
+        AdminBanglaSkill = new javax.swing.JCheckBox();
+        AdminEnglishSkill = new javax.swing.JCheckBox();
+        AdminRegionalLanguageSkill = new javax.swing.JCheckBox();
+        AdminTechnicalSkill = new javax.swing.JCheckBox();
+        AdminITSkill = new javax.swing.JCheckBox();
+        AdminCommunicationsSkill = new javax.swing.JCheckBox();
+        AdminEngineeringSkill = new javax.swing.JCheckBox();
+        SpecializedSkillsPanelPreviousButton = new javax.swing.JButton();
+        SpecializedSkillsPanelNextButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        AdminFitnessLevel = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        AdminAsthma = new javax.swing.JCheckBox();
+        AdminAllergy = new javax.swing.JCheckBox();
+        AdminBackProblem = new javax.swing.JCheckBox();
+        AdminNoneProblem = new javax.swing.JCheckBox();
+        jLabel4 = new javax.swing.JLabel();
+        AdminLiftHeavyObjectsYes = new javax.swing.JRadioButton();
+        AdminLiftHeavyObjectsNo = new javax.swing.JRadioButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
+        jLabel1.setText("Specialized Skills");
+
+        AdminMedicalTraining.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        AdminMedicalTraining.setText("Medical Training");
+
+        AdminMedicalTrainingOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Select Option---", "Doctor", "Nurse", "First Aid Certified", "Paramedic" }));
+        AdminMedicalTrainingOption.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+
+        AdminSearchAndRescue.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        AdminSearchAndRescue.setText("Search & Rescue");
+
+        AdminSwimming.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        AdminSwimming.setText("Swimming");
+
+        AdminDriving.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        AdminDriving.setText("Driving");
+
+        AdminVehicleType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Select Vehicle Type---", "Car", "Motorcycle", "Bicycle", "Truck", " " }));
+        AdminVehicleType.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+
+        AdminLanguageSkills.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        AdminLanguageSkills.setText("Language Skills");
+
+        AdminBanglaSkill.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        AdminBanglaSkill.setText("Bangla");
+
+        AdminEnglishSkill.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        AdminEnglishSkill.setText("English");
+
+        AdminRegionalLanguageSkill.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        AdminRegionalLanguageSkill.setText("Regional Languages");
+
+        AdminTechnicalSkill.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        AdminTechnicalSkill.setText("Technical Skills");
+
+        AdminITSkill.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        AdminITSkill.setText("IT");
+
+        AdminCommunicationsSkill.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        AdminCommunicationsSkill.setText("Communications");
+        AdminCommunicationsSkill.addActionListener(this::AdminCommunicationsSkillActionPerformed);
+
+        AdminEngineeringSkill.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        AdminEngineeringSkill.setText("Engineering");
+
+        SpecializedSkillsPanelPreviousButton.setBackground(new java.awt.Color(0, 153, 153));
+        SpecializedSkillsPanelPreviousButton.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
+        SpecializedSkillsPanelPreviousButton.setForeground(new java.awt.Color(204, 255, 255));
+        SpecializedSkillsPanelPreviousButton.setText("Previous");
+        SpecializedSkillsPanelPreviousButton.addActionListener(this::SpecializedSkillsPanelPreviousButtonActionPerformed);
+
+        SpecializedSkillsPanelNextButton.setBackground(new java.awt.Color(0, 153, 153));
+        SpecializedSkillsPanelNextButton.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
+        SpecializedSkillsPanelNextButton.setForeground(new java.awt.Color(204, 255, 255));
+        SpecializedSkillsPanelNextButton.setText("Next");
+        SpecializedSkillsPanelNextButton.addActionListener(this::SpecializedSkillsPanelNextButtonActionPerformed);
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel2.setText("Physical Fitness Level");
+
+        AdminFitnessLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Select Level---", "Excellent", "Good", "Average", "Limited Mobility" }));
+        AdminFitnessLevel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel3.setText("Any Health Issue?");
+
+        AdminAsthma.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        AdminAsthma.setText("Asthma");
+
+        AdminAllergy.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        AdminAllergy.setText("Allergy");
+
+        AdminBackProblem.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        AdminBackProblem.setText("Back Problems");
+
+        AdminNoneProblem.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        AdminNoneProblem.setText("None");
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel4.setText("Can Lift Heavy Objects?");
+
+        AdminLiftHeavyObjectsYes.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        AdminLiftHeavyObjectsYes.setText("YES");
+
+        AdminLiftHeavyObjectsNo.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        AdminLiftHeavyObjectsNo.setText("NO");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(SpecializedSkillsPanelPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 460, Short.MAX_VALUE)
+                                .addComponent(SpecializedSkillsPanelNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(AdminSwimming)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(63, 63, 63)
+                                                .addComponent(AdminBanglaSkill)
+                                                .addGap(20, 20, 20))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(AdminMedicalTraining)
+                                                    .addComponent(AdminDriving))
+                                                .addGap(29, 29, 29)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(AdminVehicleType, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(AdminMedicalTrainingOption, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(AdminSearchAndRescue))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(40, 40, 40))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(AdminITSkill)))
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AdminFitnessLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(AdminEnglishSkill)
+                                        .addGap(73, 73, 73))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(AdminEngineeringSkill)
+                                        .addGap(45, 45, 45)))
+                                .addGap(9, 9, 9)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(AdminCommunicationsSkill)
+                                    .addComponent(AdminRegionalLanguageSkill)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(AdminLiftHeavyObjectsYes)
+                                    .addComponent(AdminAsthma))
+                                .addGap(41, 41, 41)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(AdminLiftHeavyObjectsNo)
+                                    .addComponent(AdminAllergy))
+                                .addGap(28, 28, 28)
+                                .addComponent(AdminBackProblem)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(AdminNoneProblem)
+                        .addGap(84, 84, 84))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(AdminTechnicalSkill)
+                            .addComponent(AdminLanguageSkills))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AdminMedicalTraining)
+                    .addComponent(AdminMedicalTrainingOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(AdminSearchAndRescue)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AdminSwimming)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AdminDriving)
+                    .addComponent(AdminVehicleType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addComponent(AdminLanguageSkills)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AdminRegionalLanguageSkill)
+                    .addComponent(AdminEnglishSkill)
+                    .addComponent(AdminBanglaSkill))
+                .addGap(13, 13, 13)
+                .addComponent(AdminTechnicalSkill)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AdminITSkill)
+                    .addComponent(AdminEngineeringSkill)
+                    .addComponent(AdminCommunicationsSkill))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(AdminFitnessLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(AdminAsthma)
+                    .addComponent(AdminAllergy)
+                    .addComponent(AdminBackProblem)
+                    .addComponent(AdminNoneProblem))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AdminLiftHeavyObjectsYes)
+                    .addComponent(AdminLiftHeavyObjectsNo)
+                    .addComponent(jLabel4))
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SpecializedSkillsPanelPreviousButton)
+                    .addComponent(SpecializedSkillsPanelNextButton))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void AdminCommunicationsSkillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminCommunicationsSkillActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AdminCommunicationsSkillActionPerformed
+
+    private void SpecializedSkillsPanelNextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpecializedSkillsPanelNextButtonActionPerformed
+        // TODO add your handling code here:
+        
+        if (!validateTechnicalSkills() || !validateMedicalTraining() || !validateDriving() || !validateLanguageSkills() ) {
+            return;
+        }
+
+        MainAdminFrame frame = (MainAdminFrame) SwingUtilities.getWindowAncestor(this);
+         AdminData admin=frame.getAdminData();
+         admin.setMedicalTraining(AdminMedicalTraining.isSelected() 
+        ? AdminMedicalTrainingOption.getSelectedItem().toString() 
+        : "No");
+
+    admin.setSearchAndRescue(AdminSearchAndRescue.isSelected() ? "Yes" : "No");
+    admin.setSwimming(AdminSwimming.isSelected() ? "Yes" : "No");
+    admin.setDriving(AdminDriving.isSelected() 
+        ? AdminVehicleType.getSelectedItem().toString() 
+        : "No");
+
+    // === Language Skills ===
+    String languageSkills = "No";
+    if (AdminLanguageSkills.isSelected()) {
+        languageSkills = "";
+        if (AdminBanglaSkill.isSelected()) languageSkills += "Bangla,";
+        if (AdminEnglishSkill.isSelected()) languageSkills += "English,";
+        if (AdminRegionalLanguageSkill.isSelected()) languageSkills += "Regional,";
+        if (!languageSkills.isEmpty()) languageSkills = languageSkills.substring(0, languageSkills.length() - 1);
+        if (languageSkills.isEmpty()) languageSkills = "No";
+    }
+    admin.setLanguageSkills(languageSkills);
+
+    // === Technical Skills ===
+    String technicalSkills = "No";
+    if (AdminTechnicalSkill.isSelected()) {
+        technicalSkills = "";
+        if (AdminITSkill.isSelected()) technicalSkills += "IT,";
+        if (AdminEngineeringSkill.isSelected()) technicalSkills += "Engineering,";
+        if (AdminCommunicationsSkill.isSelected()) technicalSkills += "Communications,";
+        if (!technicalSkills.isEmpty()) technicalSkills = technicalSkills.substring(0, technicalSkills.length() - 1);
+        if (technicalSkills.isEmpty()) technicalSkills = "No";
+    }
+    admin.setTechnicalSkills(technicalSkills);
+
+    // === Physical Fitness ===
+    admin.setPhysicalFitnessLevel(AdminFitnessLevel.getSelectedIndex() > 0
+        ? AdminFitnessLevel.getSelectedItem().toString()
+        : "No");
+
+    // === Health Issues ===
+    admin.setAsthma(AdminAsthma.isSelected() ? "Yes" : "No");
+    admin.setAllergy(AdminAllergy.isSelected() ? "Yes" : "No");
+    admin.setBackProblems(AdminBackProblem.isSelected() ? "Yes" : "No");
+    admin.setNoneProblems(AdminNoneProblem.isSelected() ? "Yes" : "No");
+
+    // === Abilities ===
+    if (AdminLiftHeavyObjectsYes.isSelected()) {
+        admin.setLiftHeavyObjects("Yes");
+    } else if (AdminLiftHeavyObjectsNo.isSelected()) {
+        admin.setLiftHeavyObjects("No");
+    } else {
+        admin.setLiftHeavyObjects("No");
+    }
+         
+        frame.showCard("EXPERIENCE");
+    }//GEN-LAST:event_SpecializedSkillsPanelNextButtonActionPerformed
+
+    private void SpecializedSkillsPanelPreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SpecializedSkillsPanelPreviousButtonActionPerformed
+        // TODO add your handling code here:
+        MainAdminFrame frame = (MainAdminFrame) SwingUtilities.getWindowAncestor(this);
+        frame.showCard("QUALIFICATION");
+    }//GEN-LAST:event_SpecializedSkillsPanelPreviousButtonActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox AdminAllergy;
+    private javax.swing.JCheckBox AdminAsthma;
+    private javax.swing.JCheckBox AdminBackProblem;
+    private javax.swing.JCheckBox AdminBanglaSkill;
+    private javax.swing.JCheckBox AdminCommunicationsSkill;
+    private javax.swing.JCheckBox AdminDriving;
+    private javax.swing.JCheckBox AdminEngineeringSkill;
+    private javax.swing.JCheckBox AdminEnglishSkill;
+    private javax.swing.JComboBox<String> AdminFitnessLevel;
+    private javax.swing.JCheckBox AdminITSkill;
+    private javax.swing.JCheckBox AdminLanguageSkills;
+    private javax.swing.JRadioButton AdminLiftHeavyObjectsNo;
+    private javax.swing.JRadioButton AdminLiftHeavyObjectsYes;
+    private javax.swing.JCheckBox AdminMedicalTraining;
+    private javax.swing.JComboBox<String> AdminMedicalTrainingOption;
+    private javax.swing.JCheckBox AdminNoneProblem;
+    private javax.swing.JCheckBox AdminRegionalLanguageSkill;
+    private javax.swing.JCheckBox AdminSearchAndRescue;
+    private javax.swing.JCheckBox AdminSwimming;
+    private javax.swing.JCheckBox AdminTechnicalSkill;
+    private javax.swing.JComboBox<String> AdminVehicleType;
+    private javax.swing.JButton SpecializedSkillsPanelNextButton;
+    private javax.swing.JButton SpecializedSkillsPanelPreviousButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JSlider jSlider1;
+    // End of variables declaration//GEN-END:variables
+}
